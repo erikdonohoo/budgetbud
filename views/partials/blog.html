@@ -1,0 +1,37 @@
+<div class="container-fluid">
+	<div class="row">
+		<form class="search" ng-submit="search()">
+			<div class="search" ng-class="{focus: data.search && data.search.length > 0}">
+				<i class="fa fa-search fa-2x pull-left"></i>
+				<input type="text" class="search pull-right" ng-model="data.search" placeholder="search for posts" />
+			</div>
+			<input type="submit" class="search-submit" value="Search" />
+		</form>
+	</div>
+	<div class="row">
+		<div class="col-sm-3 shrink">
+			<div class="archive affix">
+				<h2>Archive</h2>
+				<ul>
+					<li ng-repeat="month in year">
+						<a ng-href="/blog?startDate={{month.start}}&amp;endDate={{month.end}}">{{month.start | date:'MMMM yyyy'}}</a>
+					</li>
+					<li class="all">
+						<a ng-href="/blog">All Posts</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="col-sm-9 shrink">
+			<ed-load condition="postsLoading()"></ed-load>
+			<h2 class="noposts" ng-show="posts && posts.length == 0">No posts found</h2>
+			<h2 class="noposts" ng-show="(posts | objectFilter:data.search).length == 0 && data.search.length > 0 && !(posts && posts.length == 0)"><div>Nothing here <i class="fa fa-frown-o fa-2x"></i></div>click search to load more results</h2>
+			<div class="post" ng-repeat="post in posts | objectFilter:data.search">
+				<a ng-href="/blog/{{post._id}}" class="title"><h1>{{post.title}}</h1></a>
+				<div class="info clearfix"><span class="date">{{post.date | date:'mediumDate'}}</span><span class="tags"><a ng-href="/blog?tag={{tag}}" ng-repeat="tag in post.tags" class="tag" ng-class="{activetag: tag == data.tag}">{{tag}}</a></span></div>
+				<p class="clearfix"><a ng-href="/blog/{{post._id}}" class="img-a"><img class="headline img-responsive" ng-src="{{post.image}}"/></a>{{post.snippet}}</p>
+				<a ng-href="/blog/{{post._id}}" class="more">View More</a>
+			</div>
+		</div>
+	</div>
+</div>

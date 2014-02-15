@@ -1,0 +1,62 @@
+<html ng-app="ed.web">
+<head>
+	<meta charset="utf8">
+	<title>{e}rik donohoo</title>
+	<base href="/">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta id="viewport" name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<link rel="stylesheet" type="text/css" href="/css/bootstrap/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="/css/fontawesome/css/font-awesome.css">
+	<link rel="stylesheet" type="text/css" href="/css/app.css">
+	<link rel="stylesheet" type="text/css" href="/css/prettify/prettify.css">
+	<link rel="shortcut icon" href="/img/favicon.png">
+</head>
+<body>
+	<div ed-scroll="250">
+	</div>
+	<span id="top"></span>
+	<div id="wrap">
+		<nav class="navbar navbar-fixed-top" ng-controller="NavCtrl" id="top">
+			<div class="container">
+				<div class="row">
+					<a class="navbar-brand" href="/"><ed-logo size="40"></ed-logo></a>
+					<div class="menu" ng-class="{open: nav.open}" ng-click="nav.open = !nav.open"><i class="fa fa-bars fa-2x"></i></div>
+					<div class="container-fluid">
+						<ul class="nav nav-pills" ng-show="nav.open" ed-show-window="768">
+							<li ng-class="{active: location.path() == '/blog'}"><a href="/blog">Blog</a></li>
+							<li ng-class="{active: location.path() == '/work'}"><a href="/">Work</a></li>
+							<li ng-class="{active: location.path() == '/play'}"><a href="/">Play</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</nav>
+		<div class="app">
+			<div class="container">
+				<div ng-view></div>
+			</div>
+		</div>
+	</div>
+	<footer>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-sm-4">
+					<h3>&copy; erik donohoo</h3>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<script src="/css/prettify/prettify.js"></script>
+	<script src="/js/lib/angular/angular.js"></script>
+	<script src="/js/lib/angular/angular-route.js"></script>
+	<script src="/js/lib/angular/angular-resource.js"></script>
+	<script src="/js/lib/angular/angular-touch.js"></script>
+	<script src="/js/lib/angular/angular-animate.js"></script>
+	<script src="/js/app.js"></script>
+
+	<script src="/js/controllers/blog.js"></script>
+	<script src="/js/controllers/post.js"></script>
+	<script src="/js/services/post.js"></script>
+</body>
+</html>
