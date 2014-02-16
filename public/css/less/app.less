@@ -1,0 +1,38 @@
+// Colors
+@nav:#555;
+@main:#ccc;
+
+// Fonts
+@import url(http://fonts.googleapis.com/css?family=Fauna+One);
+@font-main:'Fauna One', serif;
+@font-size:15px;
+
+html ,body {
+	min-height:100%;
+	font-size:@font-size;
+	font-family:@font-main;
+}
+#app {
+	padding:0;
+	margin:0;
+}
+.nav {
+	min-height:100%;
+	position:fixed;
+	background-color:@nav;
+}
+.main {
+	margin-left:25%;
+	min-height:100%;
+	background-color:@main;
+}
+
+@media (max-width: 768px) {
+	.nav {
+		position:relative;
+		min-height:0%;
+	}
+	.main {
+		margin-left:0
+	}
+}
