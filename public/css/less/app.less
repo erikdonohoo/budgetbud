@@ -15,7 +15,7 @@ html ,body {
 	font-size:@font-size;
 	font-family:@font-main;
 	text-shadow: 0 1px 1px hsla(0,0%,0%,.25);
-	min-width:960px;
+	min-width:1280px;
 }
 a {
 	color:inherit;
@@ -44,7 +44,7 @@ hr {
 	background-image:url('/img/tweed.png');
 	color:@font-light;
 	box-shadow: inset -2px 0 3px 1px hsla(0,0%,0%,.25);
-	min-width:240px;
+	min-width:320px;
 }
 footer {
 	position:absolute;
@@ -80,14 +80,17 @@ footer {
 .main {
 	margin-left:25%;
 	min-height:100%;
-	min-width:720px;
+	min-width:960px;
 	background-image:url('/img/squairy_light.png');
 }
 .nav li h2 {
 	margin:0;
 }
 ul.nav li {
+	padding:0 40px;
 	margin:10px 0;
+	position:relative;
+	overflow:hidden;
 	-webkit-transition: all .25s ease;
 	   -moz-transition: all .25s ease;
 	    -ms-transition: all .25s ease;
@@ -97,6 +100,26 @@ ul.nav li {
 		border-radius:6px;
 		background-color:@main;
 		color:@font-dark;
+
+		i.fa {
+			opacity:0.8;
+			left:10px;
+		}
+	}
+	a:hover {
+		background-color:transparent;
+	}
+	i.fa {
+		color:@font-dark;
+		position:absolute;
+		opacity:0;
+		left:-20px;
+		top:12px;
+		-webkit-transition: all .25s ease;
+		   -moz-transition: all .25s ease;
+		    -ms-transition: all .25s ease;
+		     -o-transition: all .25s ease;
+		        transition: all .25s ease;
 	}
 }
 
