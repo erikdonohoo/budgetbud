@@ -5,6 +5,7 @@ body {
   font-size: 15px;
   font-family: 'Fauna One', serif;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
+  min-width: 960px;
 }
 a {
   color: inherit;
@@ -33,6 +34,7 @@ hr {
   background-image: url('/img/tweed.png');
   color: #cad4cd;
   box-shadow: inset -2px 0 3px 1px rgba(0, 0, 0, 0.25);
+  min-width: 240px;
 }
 footer {
   position: absolute;
@@ -69,6 +71,7 @@ footer {
 .main {
   margin-left: 25%;
   min-height: 100%;
+  min-width: 720px;
   background-image: url('/img/squairy_light.png');
 }
 .nav li h2 {
@@ -88,11 +91,17 @@ ul.nav li:hover {
   color: #333333;
 }
 @media (max-width: 768px) {
-  .nav {
+  .menu {
     position: relative;
     min-height: 0%;
+    min-width: 100%;
   }
   .main {
+    min-width: 100%;
     margin-left: 0;
+  }
+  html,
+  body {
+    min-width: 100%;
   }
 }
