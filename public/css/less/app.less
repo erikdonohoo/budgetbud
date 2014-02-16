@@ -97,18 +97,23 @@ ul.nav li {
 	    -ms-transition: all @anim-speed ease;
 	     -o-transition: all @anim-speed ease;
 	        transition: all @anim-speed ease;
-	&:hover {
+	&:hover, &.active {
 		border-radius:6px;
 		background-color:@main;
 		color:@font-dark;
 
 		i.fa {
 			opacity:0.8;
-			left:10px;
+			left:12px;
 		}
 	}
-	a:hover {
-		background-color:transparent;
+	&.active {
+		box-shadow: inset 2px 2px 5px 1px hsla(0,0%,0%,.25);
+		border-bottom:1px solid @font-dark;
+	}
+	a {
+		color:inherit !important;
+		background-color:transparent !important;
 	}
 	i.fa {
 		color:@font-dark;

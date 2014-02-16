@@ -88,17 +88,24 @@ ul.nav li {
   -o-transition: all 0.2s ease;
   transition: all 0.2s ease;
 }
-ul.nav li:hover {
+ul.nav li:hover,
+ul.nav li.active {
   border-radius: 6px;
   background-color: #cccccc;
   color: #333333;
 }
-ul.nav li:hover i.fa {
+ul.nav li:hover i.fa,
+ul.nav li.active i.fa {
   opacity: 0.8;
-  left: 10px;
+  left: 12px;
 }
-ul.nav li a:hover {
-  background-color: transparent;
+ul.nav li.active {
+  box-shadow: inset 2px 2px 5px 1px rgba(0, 0, 0, 0.25);
+  border-bottom: 1px solid #333333;
+}
+ul.nav li a {
+  color: inherit !important;
+  background-color: transparent !important;
 }
 ul.nav li i.fa {
   color: #333333;
