@@ -13,7 +13,7 @@
 <body>
 
 	<div id="app" class="container-fluid">
-		<div class="col-sm-3 menu">
+		<div class="col-sm-3 menu" ng-controller="NavCtrl">
 			<div class="pad">
 				<a href="/">
 					<div class="head">
@@ -22,12 +22,12 @@
 					</div>
 				</a>
 			</div>
-			<div class="pad">
+			<div class="pad" ng-if="loggedIn()">
 				<ul class="nav nav-pills nav-stacked">
-					<li class="active"><i class="fa fa-compass fa-2x"></i><a href><h2>Overview</h2></a></li>
-					<li><i class="fa fa-money fa-2x"></i><a href><h2>Budgets</h2></a></li>
-					<li><i class="fa fa-pencil fa-2x"></i><a href><h2>Expenses</h2></a></li>
-					<li><i class="fa fa-bar-chart-o fa-2x"></i><a href><h2>Analyze</h2></a></li>
+					<li ng-class="{active: nav.path() == 'overview'}"><i class="fa fa-compass fa-2x"></i><a href><h2>Overview</h2></a></li>
+					<li ng-class="{active: nav.path() == 'budgets'}"><i class="fa fa-money fa-2x"></i><a href><h2>Budgets</h2></a></li>
+					<li ng-class="{active: nav.path() == 'expenses'}"><i class="fa fa-pencil fa-2x"></i><a href><h2>Expenses</h2></a></li>
+					<!-- <li><i class="fa fa-bar-chart-o fa-2x"></i><a href><h2>Analyze</h2></a></li> -->
 				</ul>
 			</div>
 			<footer>
