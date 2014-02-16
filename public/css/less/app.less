@@ -6,25 +6,94 @@
 @import url(http://fonts.googleapis.com/css?family=Fauna+One);
 @font-main:'Fauna One', serif;
 @font-size:15px;
+@font-light:#CAD4CD;
+@font-awesome:'FontAwesome';
+@font-dark:#333;
 
 html ,body {
 	min-height:100%;
 	font-size:@font-size;
 	font-family:@font-main;
+	text-shadow: 0 1px 1px hsla(0,0%,0%,.25);
+}
+a {
+	color:inherit;
+	text-decoration: none;
+	height:auto;
+	width:auto;
+	&:hover {
+		color:inherit;
+		text-decoration: none;
+	}
+}
+hr {
+	width:90%;
+	margin:20px auto;
+}
+.pad {
+	padding:0 15px;
 }
 #app {
 	padding:0;
 	margin:0;
+	> div.row-fluid > [class^="col-"] {
+		padding-left:0;
+		padding-right:0;
+	}
 }
-.nav {
+.menu {
 	min-height:100%;
 	position:fixed;
 	background-color:@nav;
+	color:@font-light;
+	z-index:-3;
+}
+.head {
+	text-align: center;
+	h1 {
+		position:relative;
+		display:inline-block;
+		word-wrap: nowrap;
+	}
+	h1:after, h1:before {
+		position:absolute;
+		content:'\f155';
+		font-size:50px;
+		font-family:@font-awesome;
+		top:-15%;
+		z-index:-1;
+		opacity:0.6;
+	}
+	h1:after {
+		color:green;
+		left:50%;
+	}
+	h1:before {
+		color:white;
+		left:49.5%;
+		z-index:-2;
+	}
 }
 .main {
 	margin-left:25%;
 	min-height:100%;
 	background-color:@main;
+}
+.nav li h2 {
+	margin:0;
+}
+ul.nav li {
+	margin:10px 0;
+	-webkit-transition: all .25s ease;
+	   -moz-transition: all .25s ease;
+	    -ms-transition: all .25s ease;
+	     -o-transition: all .25s ease;
+	        transition: all .25s ease;
+	&:hover a {
+		border-radius:6px;
+		background-color:@main;
+		color:@font-dark;
+	}
 }
 
 @media (max-width: 768px) {
