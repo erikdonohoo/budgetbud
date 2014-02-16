@@ -8,13 +8,9 @@ body {
 }
 a {
   color: inherit;
-  text-decoration: none;
-  height: auto;
-  width: auto;
 }
 a:hover {
   color: inherit;
-  text-decoration: none;
 }
 hr {
   width: 90%;
@@ -27,7 +23,7 @@ hr {
   padding: 0;
   margin: 0;
 }
-#app > div.row-fluid > [class^="col-"] {
+#app > [class^="col-"] {
   padding-left: 0;
   padding-right: 0;
 }
@@ -36,8 +32,12 @@ hr {
   position: fixed;
   background-image: url('/img/tweed.png');
   color: #cad4cd;
-  z-index: -3;
   box-shadow: inset -2px 0 3px 1px rgba(0, 0, 0, 0.25);
+}
+footer {
+  position: absolute;
+  bottom: 0;
+  left: 15px;
 }
 .head {
   text-align: center;
@@ -69,7 +69,7 @@ hr {
 .main {
   margin-left: 25%;
   min-height: 100%;
-  background-image: url('/img/square.png');
+  background-image: url('/img/squairy_light.png');
 }
 .nav li h2 {
   margin: 0;
@@ -82,7 +82,7 @@ ul.nav li {
   -o-transition: all .25s ease;
   transition: all .25s ease;
 }
-ul.nav li:hover a {
+ul.nav li:hover {
   border-radius: 6px;
   background-color: #cccccc;
   color: #333333;
