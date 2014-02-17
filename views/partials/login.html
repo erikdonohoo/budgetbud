@@ -1,5 +1,11 @@
-<form ng-submit="handle()">
-	<input type="email" ng-model="data.user.email"/>
-	<input type="password" ng-model="data.user.password" />
-	<input type="submit" value="submit" ng-click="handle()"/>
-</form>
+<div class="container-fluid">
+	<form ng-submit="handle()" class="col-sm-offset-3 col-sm-6">
+		<h3>Sign In or Sign Up</h3>
+		<label for="email">Email</label>
+		<input id="email" type="email" ng-model="data.user.email"/>
+		<label for="password">Password</label>
+		<input id="password" type="password" ng-model="data.user.password" />
+		<input type="submit" value="submit" ng-click="handle()"/>
+	</form>
+	<div class="col-sm-offset-3"></div>
+</div>
