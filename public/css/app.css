@@ -123,6 +123,9 @@ ul.nav li i.fa {
   transition: all 0.2s ease;
 }
 @media (max-width: 768px) {
+  .hidden-xs {
+    display: none;
+  }
   .pad {
     display: inline-block;
   }
