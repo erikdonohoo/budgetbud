@@ -27,11 +27,11 @@
 					<li ng-class="{active: location.path() == '/'}"><a href="/"><i class="fa fa-compass fa-2x"></i><h2>Overview</h2></a></li>
 					<li ng-class="{active: location.path() == '/budgets'}"><a href="/budgets"><i class="fa fa-money fa-2x"></i><h2>Budgets</h2></a></li>
 					<li ng-class="{active: location.path() == '/expenses'}"><a href="/expenses"><i class="fa fa-pencil fa-2x"></i><h2>Expenses</h2></a></li>
-					<!-- <li><i class="fa fa-bar-chart-o fa-2x"></i><a href><h2>Analyze</h2></a></li> -->
+					<li ng-class="{active: location.path() == '/analyze'}"><a href><i class="fa fa-bar-chart-o fa-2x"></i><h2>Analyze</h2></a></li>
 				</ul>
 				<hr class="hidden-xs">
 				<ul class="nav nav-pills nav-stacked hidden-xs">
-					<li><a ng-click="logout()" href><h2>Logout</h2></li>
+					<li><a ng-click="logout()" href><h2>Logout</h2></a></li>
 				</ul>
 			</div>
 			<footer class="hidden-xs">
