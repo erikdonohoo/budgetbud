@@ -126,17 +126,42 @@ ul.nav li i.fa {
   ul.nav li h2 {
     display: none;
   }
+  ul.nav li {
+    display: inline-block;
+    background: transparent;
+    height: 80%;
+    color: #cad4cd;
+  }
+  ul.nav li.active,
+  ul.nav li:hover {
+    background: transparent;
+    box-shadow: none;
+    color: inherit;
+    border: none;
+  }
+  ul.nav li:hover i.fa,
+  ul.nav li.active i.fa {
+    color: inherit;
+  }
+  ul.nav li i.fa {
+    left: -20px;
+  }
   .menu {
     position: relative;
     min-height: 0%;
     min-width: 100%;
     height: 70px;
   }
-  .menu .head {
-    float: left;
+  .menu .top {
+    left: 0;
+    top: -12px;
+    position: relative;
     opacity: 0.99;
+    padding: 0 15px;
+    height: inherit;
   }
   .menu .navigation {
+    height: inherit;
     float: right;
   }
   .main {

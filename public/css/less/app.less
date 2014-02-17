@@ -136,16 +136,39 @@ ul.nav li {
 	ul.nav li h2 {
 		display:none;
 	}
+	ul.nav li {
+		display:inline-block;
+		background:transparent;
+		height:80%;
+		color:@font-light;
+		&.active, &:hover {
+			background:transparent;
+			box-shadow: none;
+			color:inherit;
+			border:none;
+		}
+		&:hover i.fa, &.active i.fa {
+			color:inherit;
+		}
+		i.fa {
+			left:-20px;
+		}
+	}
 	.menu {
 		position:relative;
 		min-height:0%;
 		min-width:100%;
 		height:70px;
-		.head {
-			float:left;
+		.top {
+			left:0;
+			top:-12px;
+			position:relative;
 			opacity:0.99;
+			padding:0 15px;
+			height:inherit;
 		}
 		.navigation {
+			height:inherit;
 			float:right;
 		}
 	}
