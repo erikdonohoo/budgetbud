@@ -12,7 +12,12 @@ angular.module('ed.budgetbud', ['ngRoute','ngResource','ngTouch','ngAnimate']).
 
     $locationProvider.html5Mode(true);
     $route.when('/',{
-    	template:'<div>Overview</div>'
+    	template:'<div>Overview</div>',
+    	controller:function($scope,User){
+    		User.query().then(function(users){
+    			console.log(users);
+    		});
+    	}
     })
     .when('/budgets',{
     	template:'<div>Budgets</div>'
@@ -62,6 +67,16 @@ angular.module('ed.budgetbud', ['ngRoute','ngResource','ngTouch','ngAnimate']).
 		return defer.promise;
 	}
 
+	user.query = function() {
+		var defer = $q.defer();
+		$http.get('/api/users').success(function(users){
+			defer.resolve(users);
+		}).error(function(err){
+			defer.reject(err);
+		});
+		return defer.promise;
+	};
+
 	user.loggedIn = function() {
 		if ($window.sessionStorage['ed.budgetbud.user'])
 			user.user = angular.fromJson($window.sessionStorage['ed.budgetbud.user']);
@@ -84,6 +99,7 @@ angular.module('ed.budgetbud', ['ngRoute','ngResource','ngTouch','ngAnimate']).
 	$scope.nav = Nav;
 	$scope.loggedIn = User.loggedIn;
 	$scope.logout = User.logout;
+	$scope.location = $location;
 
 	$scope.$on('$routeChangeStart', function(e, route){
 		if (route.$$route.originalPath !== '/login' && !User.loggedIn())
