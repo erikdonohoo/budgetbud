@@ -136,10 +136,14 @@ ul.nav li {
 	ul.nav li h2 {
 		display:none;
 	}
+	ul.nav {
+		height:100%;
+	}
 	ul.nav li {
 		display:inline-block;
 		background:transparent;
-		height:80%;
+		height:100%;
+		margin:0;
 		color:@font-light;
 		&.active, &:hover {
 			background:transparent;
@@ -147,11 +151,13 @@ ul.nav li {
 			color:inherit;
 			border:none;
 		}
-		&:hover i.fa, &.active i.fa {
+		i.fa {
+			left:-25px;
+			opacity:0.8;
 			color:inherit;
 		}
-		i.fa {
-			left:-20px;
+		a {
+			margin:9px 0;
 		}
 	}
 	.menu {
@@ -160,16 +166,24 @@ ul.nav li {
 		min-width:100%;
 		height:70px;
 		.top {
+			width:15%;
 			left:0;
-			top:-12px;
-			position:relative;
+			top:0px;
+			position:absolute;
 			opacity:0.99;
-			padding:0 15px;
+			padding:0;
 			height:inherit;
+			h1 {
+				margin:10px 0;
+			}
 		}
 		.navigation {
+			padding:0;
+			width:85%;
+			position:absolute;
+			right:0;
+			top:0;
 			height:inherit;
-			float:right;
 		}
 	}
 	.main {

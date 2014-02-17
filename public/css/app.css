@@ -126,10 +126,14 @@ ul.nav li i.fa {
   ul.nav li h2 {
     display: none;
   }
+  ul.nav {
+    height: 100%;
+  }
   ul.nav li {
     display: inline-block;
     background: transparent;
-    height: 80%;
+    height: 100%;
+    margin: 0;
     color: #cad4cd;
   }
   ul.nav li.active,
@@ -139,12 +143,13 @@ ul.nav li i.fa {
     color: inherit;
     border: none;
   }
-  ul.nav li:hover i.fa,
-  ul.nav li.active i.fa {
+  ul.nav li i.fa {
+    left: -25px;
+    opacity: 0.8;
     color: inherit;
   }
-  ul.nav li i.fa {
-    left: -20px;
+  ul.nav li a {
+    margin: 9px 0;
   }
   .menu {
     position: relative;
@@ -153,16 +158,24 @@ ul.nav li i.fa {
     height: 70px;
   }
   .menu .top {
+    width: 15%;
     left: 0;
-    top: -12px;
-    position: relative;
+    top: 0px;
+    position: absolute;
     opacity: 0.99;
-    padding: 0 15px;
+    padding: 0;
     height: inherit;
   }
+  .menu .top h1 {
+    margin: 10px 0;
+  }
   .menu .navigation {
+    padding: 0;
+    width: 85%;
+    position: absolute;
+    right: 0;
+    top: 0;
     height: inherit;
-    float: right;
   }
   .main {
     min-width: 100%;
