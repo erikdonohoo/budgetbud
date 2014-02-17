@@ -22,19 +22,12 @@ app.use(app.router);
 app.set('auth', function(req, res, next){
 
 	// Check session
-	if (!req.session || !req.sesssion.userid)
+	if (!req.session) {
 		res.status(401).json({'error':'Need to Authenticate'});
+		return;
+	}
 
-	var mongo = require('mongo');
-	mongo.MongoClient.connection(app.get('dbstring'), function(err, db){
-		var user = db.collection('user');
-		user.findOne({_id: new mongo.BSONPure.ObjectID(req.session.userid)}, function(err, item){
-			if (err)
-				res.status(403).json({'error':'Insufficient rights'});
-			else
-				next();
-		});
-	});
+	next();
 });
 
 /**
@@ -46,7 +39,7 @@ app.get('/', routes.index);
 app.get('/partials/:name', routes.partials);
 
 // JSON API
-require('./routes/api/post').load(app);
+require('./routes/api/user').load(app);
 
 // redirect all others to the index (HTML5 history)
 app.get('*', routes.index);
