@@ -1,9 +1,16 @@
-<h1>Budgets</h1>
 <div class="container-fluid">
-	<div class="row-fluid budget" ng-repeat="budget in budgets">
-		<div class="budget-bar clearfix">
-			<div class="budget-mask" ng-style="budget.style"></div>
-			<span class="info"><span class="budget-info">{{budget.spent}}</span><span class="budget-info">{{budget.title}}</span></span><span class="total budget-info">{{budget.total}}</span>
+	<h1>Budgets</h1>
+</div>
+<div class="container-fluid">
+	<div class="row-fluid budget clearfix" ng-repeat="budget in budgets">
+		<div class="budget-desc">
+			<h2 ng-class="{over: budget.total - budget.spent < 0}"><i class="fa fa-dollar"></i> <span>{{budget.total - budget.spent | edMoney}}</span></h2>
+		</div>
+		<div class="budget-wrapper">
+			<div class="clearfix"><span class="budget-info info title"><b>{{budget.title}}</b></span><span class="total budget-info">${{budget.total}}</span></div>
+			<div class="budget-bar">
+				<div class="budget-mask" ng-style="budget.style" title="{{budget.spent}}"></div>	
+			</div>
 		</div>
 	</div>
 </div>
