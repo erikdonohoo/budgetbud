@@ -41,6 +41,7 @@ app.get('/partials/:name', routes.partials);
 // JSON API
 require('./routes/api/user').load(app);
 require('./routes/api/budget').load(app);
+require('./routes/api/category').load(app);
 
 // redirect all others to the index (HTML5 history)
 app.get('*', routes.index);

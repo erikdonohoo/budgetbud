@@ -1,5 +1,5 @@
-angular.module('ed.budgetbud').controller('BudgetCtrl', ['$scope','Budget','$routeParams','$timeout',
-	function($scope, Budget, $params,$timeout){
+angular.module('ed.budgetbud').controller('BudgetCtrl', ['$scope','Budget','$routeParams','$timeout','Category',
+	function($scope, Budget, $params,$timeout,Category){
 
 	Budget.query($params).then(function(budgets){
 		$scope.budgets = budgets;
@@ -13,6 +13,11 @@ angular.module('ed.budgetbud').controller('BudgetCtrl', ['$scope','Budget','$rou
 			b.total = Math.floor(b.total);
 		}
 		$timeout(animateBudgets);
+	});
+
+	$scope.categories = [];
+	Category.query().then(function(cats){
+		$scope.categories = cats;
 	});
 
 	// Animate and fix budget boxes

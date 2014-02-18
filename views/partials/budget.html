@@ -8,7 +8,7 @@
 			<h2 ng-class="{over: budget.total - budget.spent < 0}"><i class="fa fa-dollar"></i> <span>{{budget.total - budget.spent | edMoney}}</span></h2>
 		</div>
 		<div class="budget-wrapper">
-			<div class="clearfix"><span class="budget-info info title"><b>{{budget.title}}</b></span><span class="total budget-info">${{budget.total}}</span></div>
+			<div class="clearfix"><span class="budget-info info title"><b>{{(budget.category | category:categories).title}}</b></span><span class="total budget-info">${{budget.total}}</span></div>
 			<div class="budget-bar">
 				<div class="budget-mask" ng-style="budget.style" title="{{budget.spent}}"></div>	
 			</div>

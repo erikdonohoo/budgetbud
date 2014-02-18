@@ -66,6 +66,35 @@ angular.module('ed.budgetbud', ['ngRoute','ngResource','ngTouch','ngAnimate']).
 	return budget;
 }])
 
+.factory('Category', ['$q','$http',
+	function($q, $http){
+
+	var cat = {};
+
+	cat.query = function(params) {
+		var defer = $q.defer();
+		$http.get('/api/categories', {params:params}).success(function(val){
+			defer.resolve(val);
+		}).error(function(err){
+			defer.reject(err);
+		});
+		return defer.promise;
+	};
+	
+	return cat;
+}])
+
+.filter("category", [function(){
+
+	return function(id, cats) {
+		for (var i = cats.length - 1; i >= 0; i--) {
+			var cat = cats[i];
+			if (cat._id === id)
+				return cat;
+		}
+	};
+}])
+
 .factory('User',['$q','$http','$window','$location',
 	function($q, $http, $window, $location){
 
