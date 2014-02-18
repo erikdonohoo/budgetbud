@@ -396,34 +396,35 @@ form {
 .budget-bar {
   position: relative;
   width: 50%;
-  height: 70px;
-  background: #1de241;
+  height: 60px;
   /* Old browsers */
   border: 2px solid #333333;
-  background: -moz-linear-gradient(left, #1de241 0%, #f9c236 71%, #d6482f 93%);
+  background: #1de241;
+  /* Old browsers */
+  background: -moz-linear-gradient(left, #1de241 0%, #1de241 46%, #f9c236 81%, #d6482f 96%);
   /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, right top, color-stop(0%, #1de241), color-stop(71%, #f9c236), color-stop(93%, #d6482f));
+  background: -webkit-gradient(linear, left top, right top, color-stop(0%, #1de241), color-stop(46%, #1de241), color-stop(81%, #f9c236), color-stop(96%, #d6482f));
   /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(left, #1de241 0%, #f9c236 71%, #d6482f 93%);
+  background: -webkit-linear-gradient(left, #1de241 0%, #1de241 46%, #f9c236 81%, #d6482f 96%);
   /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(left, #1de241 0%, #f9c236 71%, #d6482f 93%);
+  background: -o-linear-gradient(left, #1de241 0%, #1de241 46%, #f9c236 81%, #d6482f 96%);
   /* Opera 11.10+ */
-  background: -ms-linear-gradient(left, #1de241 0%, #f9c236 71%, #d6482f 93%);
+  background: -ms-linear-gradient(left, #1de241 0%, #1de241 46%, #f9c236 81%, #d6482f 96%);
   /* IE10+ */
-  background: linear-gradient(to right, #1de241 0%, #f9c236 71%, #d6482f 93%);
+  background: linear-gradient(to right, #1de241 0%, #1de241 46%, #f9c236 81%, #d6482f 96%);
   /* W3C */
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#1de241', endColorstr='#d6482f', GradientType=1);
   /* IE6-9 */
   border-radius: 8px;
   z-index: 0;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 .budget-mask {
-  height: 66px;
+  height: 56px;
   z-index: 1;
   float: right;
   border-radius: 6px;
-  background-image: url('/img/squairy_light.png');
+  background-color: #EFF7ED;
   border-top-left-radius: 0px;
   border-bottom-left-radius: 0px;
   width: 100%;
@@ -440,4 +441,8 @@ form {
 .budget-info.total {
   position: absolute;
   right: 0;
+}
+.info {
+  position: absolute;
+  left: 0;
 }

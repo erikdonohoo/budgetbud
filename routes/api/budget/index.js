@@ -7,6 +7,7 @@ function query(app,mongo) {
 	return function(req, res) {
 		mongo.MongoClient.connect(app.get('dbstring'), function(err,db){
 			var budget = db.collection('budget');
+			var expense = db.collection('expense');
 			req.query = req.query || {};
 			req.query.user = req.session.user.email;
 			budget.find(req.query).sort({'total':-1}).toArray(function(err, docs){

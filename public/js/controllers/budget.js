@@ -6,6 +6,7 @@ angular.module('ed.budgetbud').controller('BudgetCtrl', ['$scope','Budget','$rou
 		for (var i = $scope.budgets.length - 1; i >= 0; i--) {
 			var b = $scope.budgets[i];
 			b.spent = Math.floor(Math.random() * b.total);
+			b.total = Math.floor(b.total);
 		}
 		$timeout(animateBudgets);
 	});
