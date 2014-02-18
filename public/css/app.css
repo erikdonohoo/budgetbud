@@ -143,26 +143,39 @@ ul.nav li i.fa {
     min-width: 0px;
     position: relative;
   }
-}
-@media (max-width: 768px) {
-  .pad {
-    display: inline-block;
+  .menu .top {
+    right: 15%;
+    margin: 0 auto;
+    position: relative;
+    opacity: 0.99;
+    padding: 0;
+    height: inherit;
+  }
+  .menu .top h1 {
+    margin: 10px auto;
+  }
+  .menu .navigation {
+    padding: 0;
+    position: relative;
     width: 100%;
+    right: 0;
+    top: 0;
+    height: inherit;
   }
   ul.nav li h2 {
     display: none;
   }
-  ul.nav {
-    height: 100%;
-  }
   ul.nav li {
-    display: inline-block;
+    display: block;
+    width: 90%;
     background: transparent;
-    height: 100%;
-    margin: 0;
+    height: 100px;
+    margin: 0 auto;
     color: #cad4cd;
-    float: right;
     padding: 0 10%;
+  }
+  ul.nav li:first-child {
+    margin-top: 100px;
   }
   ul.nav li.active,
   ul.nav li:hover {
@@ -177,19 +190,49 @@ ul.nav li i.fa {
     padding-bottom: 8px;
     color: white;
     border-bottom: 2px solid white;
+    left: 25%;
   }
   ul.nav li:hover:not(.active) i.fa {
     padding-bottom: 8px;
     border-bottom: 2px solid #cad4cd;
+    left: 25%;
   }
   ul.nav li i.fa {
-    left: -25px;
+    left: 25%;
     opacity: 0.8;
     color: inherit;
   }
   ul.nav li a {
     padding: 0;
     margin: 9px 0;
+  }
+}
+@media (max-width: 768px) {
+  .pad {
+    display: inline-block;
+    width: 100%;
+  }
+  ul.nav {
+    height: 100%;
+  }
+  ul.nav li {
+    display: inline-block;
+    height: 100%;
+    width: 10%;
+    margin: 0;
+    float: right;
+  }
+  ul.nav li:first-child {
+    margin-top: 0px;
+  }
+  ul.nav li.active i.fa {
+    left: -25px;
+  }
+  ul.nav li:hover:not(.active) i.fa {
+    left: -25px;
+  }
+  ul.nav li i.fa {
+    left: -25px;
   }
   .menu {
     position: relative;
@@ -201,22 +244,20 @@ ul.nav li i.fa {
   .menu .top {
     width: 15%;
     left: 0;
+    right: 0;
     top: 0px;
+    margin: 0;
     position: absolute;
     opacity: 0.99;
     padding: 0;
     height: inherit;
   }
   .menu .top h1 {
-    margin: 10px 0;
+    margin: 8px 0;
   }
   .menu .navigation {
-    padding: 0;
     width: 85%;
     position: absolute;
-    right: 0;
-    top: 0;
-    height: inherit;
   }
   .main {
     min-width: 100%;
@@ -325,8 +366,8 @@ form {
 }
 @media (max-width: 1279px) {
   form {
-    width: 100%;
-    margin-left: 0;
+    width: 70%;
+    margin-left: 15%;
   }
   .content {
     padding: 0;
@@ -337,11 +378,15 @@ form {
   .form-container h3 {
     text-align: center;
   }
-}
-@media (max-width: 768px) {
   .form-container > * {
     display: block;
     width: 100% !important;
+  }
+}
+@media (max-width: 768px) {
+  form {
+    width: 100%;
+    margin-left: 0%;
   }
   .col-sm-9 {
     width: 100%;
