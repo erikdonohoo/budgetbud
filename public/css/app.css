@@ -83,6 +83,7 @@ ul.nav li {
   margin: 10px 0;
   position: relative;
   overflow: hidden;
+  border-bottom: 1px solid transparent;
   -webkit-transition: all 0.2s ease;
   -moz-transition: all 0.2s ease;
   -ms-transition: all 0.2s ease;
@@ -104,7 +105,7 @@ ul.nav li:hover {
 }
 ul.nav li.active {
   box-shadow: inset 2px 2px 5px 1px rgba(0, 0, 0, 0.25);
-  border-bottom: 1px solid #333333;
+  border-bottom-color: #333333;
   background-color: #e6e6e6;
 }
 ul.nav li a {

@@ -10,7 +10,8 @@ angular.module('ed.budgetbud', ['ngRoute','ngResource','ngTouch','ngAnimate']).
 		controller: 'OverviewCtrl'
 	})
 	.when('/budgets',{
-		template:'<div>Budgets</div>'
+		templateUrl:'partials/budget',
+		controller: 'BudgetCtrl'
 	})
 	.when('/expenses', {
 		template:'<div>Expenses</div>'
