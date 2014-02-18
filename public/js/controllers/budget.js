@@ -20,6 +20,8 @@ angular.module('ed.budgetbud').controller('BudgetCtrl', ['$scope','Budget','$rou
 		$scope.categories = cats;
 	});
 
+	$scope.data = {};
+
 	// Animate and fix budget boxes
 	function animateBudgets(budget) {
 
