@@ -4,31 +4,21 @@
 angular.module('ed.budgetbud', ['ngRoute','ngResource','ngTouch','ngAnimate']).
   config(['$locationProvider','$routeProvider', function($locationProvider,$route) {
 
-  	var resolve = {
-  		user: function(User) {
-  			return 
-  		}
-  	}
-
-    $locationProvider.html5Mode(true);
-    $route.when('/',{
-    	template:'<div>Overview</div>',
-    	controller:function($scope,User){
-    		User.query().then(function(users){
-    			console.log(users);
-    		});
-    	}
-    })
-    .when('/budgets',{
-    	template:'<div>Budgets</div>'
-    })
-    .when('/expenses', {
-    	template:'<div>Expenses</div>'
-    })
-    .when('/login',{
-    	templateUrl:'/partials/login',
-    	controller: 'LoginCtrl'
-    })
+	$locationProvider.html5Mode(true);
+	$route.when('/',{
+		templateUrl:'partials/overview',
+		controller: 'OverviewCtrl'
+	})
+	.when('/budgets',{
+		template:'<div>Budgets</div>'
+	})
+	.when('/expenses', {
+		template:'<div>Expenses</div>'
+	})
+	.when('/login',{
+		templateUrl:'/partials/login',
+		controller: 'LoginCtrl'
+	});
 }])
 
 .factory('Nav', [function(){
@@ -65,7 +55,7 @@ angular.module('ed.budgetbud', ['ngRoute','ngResource','ngTouch','ngAnimate']).
 			defer.reject(err);
 		});
 		return defer.promise;
-	}
+	};
 
 	user.query = function() {
 		var defer = $q.defer();
@@ -89,7 +79,7 @@ angular.module('ed.budgetbud', ['ngRoute','ngResource','ngTouch','ngAnimate']).
 			delete user.user;
 			$location.path('/login');
 		});
-	}
+	};
 
 	return user;
 
@@ -104,7 +94,7 @@ angular.module('ed.budgetbud', ['ngRoute','ngResource','ngTouch','ngAnimate']).
 	$scope.$on('$routeChangeStart', function(e, route){
 		if (route.$$route.originalPath !== '/login' && !User.loggedIn())
 			$location.path('/login');
-	})
+	});
 }])
 
 .run(['$rootScope','$location','Nav',function($root,$loc){
