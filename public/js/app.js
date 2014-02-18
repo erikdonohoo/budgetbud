@@ -2,7 +2,7 @@
 
 // Declare app level module which depends on filters, and services
 angular.module('ed.budgetbud', ['ngRoute','ngResource','ngTouch','ngAnimate']).
-  config(['$locationProvider','$routeProvider', function($locationProvider,$route) {
+  config(['$locationProvider','$routeProvider','$httpProvider', function($locationProvider,$route,$http) {
 
 	$locationProvider.html5Mode(true);
 	$route.when('/',{
@@ -20,12 +20,43 @@ angular.module('ed.budgetbud', ['ngRoute','ngResource','ngTouch','ngAnimate']).
 		templateUrl:'/partials/login',
 		controller: 'LoginCtrl'
 	});
+
+	// Handle auth issues
+	$http.interceptors.push(['$location','$window', function($location,$window){
+		return {
+			responseError: function(rejection) {
+				if (rejection.status === 401 && rejection.config.url.indexOf('/api') === 0) {
+					console.log("Auth Issue, force signout");
+					delete $window.sessionStorage['ed.budgetbud.user'];
+					$location.path('/login');
+				}
+			}
+		};
+	}]);
 }])
 
 .factory('Nav', [function(){
 	var nav = {};
 	nav.open = false; // Show/hide nav
 	return nav;
+}])
+
+.factory('Budget', ['$q','$http',
+	function($q, $http){
+
+	var budget = {};
+
+	budget.query = function(params) {
+		var defer = $q.defer();
+		$http.get('/api/budgets', {params:params}).success(function(budgets){
+			defer.resolve(budgets);
+		}).error(function(err){
+			defer.reject(err);
+		});
+		return defer.promise;
+	};
+
+	return budget;
 }])
 
 .factory('User',['$q','$http','$window','$location',

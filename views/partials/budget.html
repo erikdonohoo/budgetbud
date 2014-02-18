@@ -1,1 +1,8 @@
 <h1>Budgets</h1>
+<div class="container-fluid">
+	<div class="row-fluid budget" ng-repeat="budget in budgets">
+		<div class="budget-bar clearfix">
+			<span class="budget-info">{{budget.spent}}</span><span class="budget-info">{{budget.title}}<span class="pull-right budget-info">{{budget.total}}</span>
+		</div>
+	</div>
+</div>
