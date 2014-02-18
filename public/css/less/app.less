@@ -134,10 +134,30 @@ ul.nav li {
 	}
 }
 
-@media (max-width: 768px) {
+// Tablet landscape, very small screen
+@media (max-width:1279px) {
+	html, body {
+		min-width:0px;
+	}
 	.hidden-xs {
 		display:none;
 	}
+	.main {
+		float:right;
+		width:90%;
+		min-width:0px;
+		max-width:95%;
+		margin-left:0px;
+	}
+	.menu {
+		width:10%;
+		min-width:0px;
+		position:relative;
+	}
+}
+
+// Smartphone, tablet portrait
+@media (max-width:768px) {
 	.pad {
 		display:inline-block;
 		width:100%;

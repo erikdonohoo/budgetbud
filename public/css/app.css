@@ -123,10 +123,28 @@ ul.nav li i.fa {
   -o-transition: all 0.2s ease;
   transition: all 0.2s ease;
 }
-@media (max-width: 768px) {
+@media (max-width: 1279px) {
+  html,
+  body {
+    min-width: 0px;
+  }
   .hidden-xs {
     display: none;
   }
+  .main {
+    float: right;
+    width: 90%;
+    min-width: 0px;
+    max-width: 95%;
+    margin-left: 0px;
+  }
+  .menu {
+    width: 10%;
+    min-width: 0px;
+    position: relative;
+  }
+}
+@media (max-width: 768px) {
   .pad {
     display: inline-block;
     width: 100%;
@@ -305,13 +323,10 @@ form {
   border-right: 1px solid #52a052;
   border-top: 1px solid rgba(255, 255, 255, 0.25);
 }
-@media (max-width: 768px) {
+@media (max-width: 1279px) {
   form {
     width: 100%;
     margin-left: 0;
-  }
-  .col-sm-9 {
-    width: 100%;
   }
   .content {
     padding: 0;
@@ -322,8 +337,13 @@ form {
   .form-container h3 {
     text-align: center;
   }
+}
+@media (max-width: 768px) {
   .form-container > * {
     display: block;
     width: 100% !important;
+  }
+  .col-sm-9 {
+    width: 100%;
   }
 }
