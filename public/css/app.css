@@ -1,4 +1,5 @@
 @import url(http://fonts.googleapis.com/css?family=Fauna+One);
+@import url(http://fonts.googleapis.com/css?family=Oxygen);
 html,
 body {
   min-height: 100%;
@@ -206,4 +207,98 @@ ul.nav li i.fa {
   body {
     min-width: 100%;
   }
+}
+form {
+  text-align: center;
+}
+.form-container {
+  width: 100%;
+  margin-bottom: 10px;
+  height: 60px;
+}
+.form-container h3 {
+  width: 70%;
+  float: right;
+  text-align: left;
+}
+.form-container .input {
+  height: 45px;
+  padding: 15px 10px;
+}
+.form-container input[type="submit"] {
+  border-radius: 8px;
+  text-align: center;
+  vertical-align: middle;
+}
+.highlight {
+  color: rgba(65, 185, 74, 0.95);
+  cursor: default;
+  border-bottom: 2px solid transparent;
+}
+.clickable {
+  -webkit-transition: all .25s linear;
+  -moz-transition: all .25s linear;
+  -ms-transition: all .25s linear;
+  -o-transition: all .25s linear;
+  transition: all .25s linear;
+  cursor: pointer;
+}
+.clickable.highlight {
+  cursor: default;
+}
+.clickable:not(.highlight) {
+  border-bottom: 2px solid #333333;
+}
+.form-label {
+  width: 30%;
+  height: inherit;
+  text-align: right;
+  padding: 10px 20px;
+  float: left;
+}
+.input {
+  width: 70%;
+  background-color: rgba(255, 255, 255, 0.65);
+  font-family: 'Oxygen', sans-serif;
+  font-size: 22px;
+  letter-spacing: 1.1px;
+  float: right;
+  border-radius: 8px;
+  text-align: left;
+  border: 1px solid rgba(117, 133, 150, 0.55);
+  -webkit-transition: all .3s linear;
+  -moz-transition: all .3s linear;
+  -ms-transition: all .3s linear;
+  -o-transition: all .3s linear;
+  transition: all .3s linear;
+}
+.input:focus {
+  outline: none;
+  border: 1px solid rgba(65, 185, 74, 0.95);
+}
+.green-btn {
+  background: -moz-linear-gradient(top, rgba(107, 186, 112, 0.75) 0%, #6bba70 100%);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(107, 186, 112, 0.75)), color-stop(100%, #6bba70));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, rgba(107, 186, 112, 0.75) 0%, #6bba70 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, rgba(107, 186, 112, 0.75) 0%, #6bba70 100%);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, rgba(107, 186, 112, 0.75) 0%, #6bba70 100%);
+  /* IE10+ */
+  background: linear-gradient(to bottom, rgba(107, 186, 112, 0.75) 0%, #6bba70 100%);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#bf6bba70', endColorstr='#6bba70', GradientType=0);
+  /* IE6-9 */
+  color: whitesmoke;
+  line-height: 0;
+  border: 1px solid transparent;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.25);
+}
+.green-btn:hover {
+  border-bottom: 1px solid green;
+  border-left: 1px solid #52a052;
+  border-right: 1px solid #52a052;
+  border-top: 1px solid rgba(255, 255, 255, 0.25);
 }

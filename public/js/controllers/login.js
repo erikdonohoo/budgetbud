@@ -3,9 +3,7 @@ angular.module("ed.budgetbud").controller('LoginCtrl', ['$scope','User','$locati
 
     $scope.data = {};
     $scope.data.user = {};
-    console.log('yeah');
     $scope.handle = function() {
-        console.log('handle');
         if (!$scope.data.create) {
             User.login($scope.data.user).then(function(user){
                 $location.path('/');

@@ -1,0 +1,92 @@
+form {
+	text-align: center;
+}
+@form-height:60px;
+@highlight:rgba(65, 185, 74, 0.95);
+.form-container {
+
+	h3 {
+		width:70%;
+		float:right;
+		text-align:left;
+	}
+	width:100%;
+	margin-bottom:10px;
+	height:@form-height;
+
+	.input {
+		height:@form-height - (@form-height/4);
+		padding:@form-height/4 10px;
+	}
+	input[type="submit"] {
+		border-radius:8px;
+		text-align: center;
+		vertical-align: middle;
+	}
+}
+.highlight {
+	color:@highlight;
+	cursor:default;
+	border-bottom:2px solid transparent;
+}
+.clickable {
+	-webkit-transition: all .25s linear;
+	   -moz-transition: all .25s linear;
+	    -ms-transition: all .25s linear;
+	     -o-transition: all .25s linear;
+	        transition: all .25s linear;
+	cursor:pointer;
+}
+.clickable.highlight {
+	cursor:default;
+}
+.clickable:not(.highlight) {
+	border-bottom:2px solid @font-dark;
+}
+.form-label {
+	width:30%;
+	height:inherit;
+	text-align:right;
+	padding:10px 20px;
+	float:left;
+}
+.input {
+	width:70%;
+	background-color:rgba(255, 255, 255, 0.65);
+	font-family:@font-accent;
+	font-size:22px;
+	letter-spacing: 1.1px;
+	float:right;
+	border-radius:8px;
+	text-align:left;
+	border:1px solid rgba(117, 133, 150, 0.55);
+	-webkit-transition: all .3s linear;
+	   -moz-transition: all .3s linear;
+	    -ms-transition: all .3s linear;
+	     -o-transition: all .3s linear;
+	        transition: all .3s linear;
+	&:focus {
+		outline:none;
+		border:1px solid @highlight;
+	}
+}
+.green-btn {
+	background: -moz-linear-gradient(top,  rgba(107,186,112,0.75) 0%, rgba(107,186,112,1) 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(107,186,112,0.75)), color-stop(100%,rgba(107,186,112,1))); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  rgba(107,186,112,0.75) 0%,rgba(107,186,112,1) 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  rgba(107,186,112,0.75) 0%,rgba(107,186,112,1) 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  rgba(107,186,112,0.75) 0%,rgba(107,186,112,1) 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  rgba(107,186,112,0.75) 0%,rgba(107,186,112,1) 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bf6bba70', endColorstr='#6bba70',GradientType=0 ); /* IE6-9 */
+	color:whitesmoke;
+	line-height:0;
+	border:1px solid transparent;
+	text-shadow: 1px 1px 1px hsla(0,0%,0%,.25);
+
+	&:hover {
+		border-bottom:1px solid green;
+		border-left:1px solid rgb(82, 160, 82);
+		border-right:1px solid rgb(82, 160, 82);
+		border-top:1px solid rgba(255,255,255,0.25);
+	}
+}
