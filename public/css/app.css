@@ -393,3 +393,51 @@ form {
     width: 100%;
   }
 }
+.budget-bar {
+  position: relative;
+  width: 50%;
+  height: 70px;
+  background: #1de241;
+  /* Old browsers */
+  border: 2px solid #333333;
+  background: -moz-linear-gradient(left, #1de241 0%, #f9c236 71%, #d6482f 93%);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, right top, color-stop(0%, #1de241), color-stop(71%, #f9c236), color-stop(93%, #d6482f));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(left, #1de241 0%, #f9c236 71%, #d6482f 93%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(left, #1de241 0%, #f9c236 71%, #d6482f 93%);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(left, #1de241 0%, #f9c236 71%, #d6482f 93%);
+  /* IE10+ */
+  background: linear-gradient(to right, #1de241 0%, #f9c236 71%, #d6482f 93%);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#1de241', endColorstr='#d6482f', GradientType=1);
+  /* IE6-9 */
+  border-radius: 8px;
+  z-index: 0;
+  margin-bottom: 20px;
+}
+.budget-mask {
+  height: 66px;
+  z-index: 1;
+  float: right;
+  border-radius: 6px;
+  background-image: url('/img/squairy_light.png');
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+  width: 100%;
+  -webkit-transition: width 0.6s ease-out;
+  -moz-transition: width 0.6s ease-out;
+  -ms-transition: width 0.6s ease-out;
+  -o-transition: width 0.6s ease-out;
+  transition: width 0.6s ease-out;
+}
+.budget-info {
+  z-index: 3;
+  margin: 0 10px;
+}
+.budget-info.total {
+  position: absolute;
+  right: 0;
+}
