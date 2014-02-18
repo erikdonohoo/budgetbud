@@ -316,4 +316,14 @@ form {
   .content {
     padding: 0;
   }
+  .form-container .form-label {
+    display: none;
+  }
+  .form-container h3 {
+    text-align: center;
+  }
+  .form-container > * {
+    display: block;
+    width: 100% !important;
+  }
 }
