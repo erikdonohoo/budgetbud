@@ -1,5 +1,5 @@
-<div class="container-fluid">
-	<form ng-submit="handle()" class="col-sm-offset-3 col-sm-6">
+<div class="container-fluid content">
+	<form ng-submit="handle()">
 		<div class="form-container">
 			<h3><span class="clickable" ng-click="data.create = false" ng-class="{highlight: !data.create}">Sign In</span> or <span class="clickable" ng-click="data.create = true" ng-class="{highlight: data.create}">Sign Up</span></h3>
 		</div>
@@ -15,5 +15,4 @@
 			<input type="submit" class="input green-btn" value="submit" ng-click="handle()" />
 		</div>
 	</form>
-	<div class="col-sm-offset-3"></div>
 </div>
