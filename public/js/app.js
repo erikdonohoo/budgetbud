@@ -1,7 +1,7 @@
 
 
 // Declare app level module which depends on filters, and services
-angular.module('ed.budgetbud', ['ngRoute','ngResource','ngTouch','ngAnimate']).
+angular.module('ed.budgetbud', ['ngRoute','ngResource','ngTouch','ngAnimate','ui.bootstrap']).
   config(['$locationProvider','$routeProvider','$httpProvider', function($locationProvider,$route,$http) {
 
 	$locationProvider.html5Mode(true);

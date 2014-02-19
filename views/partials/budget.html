@@ -1,9 +1,9 @@
 <div class="container-fluid">
-	<h1>Budgets <i class="fa fa-plus-square clickable" ng-click="data.newBudget = true"></i> <small>Add a budget</small></h1>
+	<h1>Budgets <i class="fa fa-plus-square clickable" ng-click="data.newBudget = {}"></i> <small>Add a budget</small></h1>
 	<h1><em>{{data.current.start | date:'MMMM yyyy'}}</em></h1>
 	<div class="budget new" ng-if="data.newBudget">
 		<form ng-submit="saveBudget()">
-			New
+			<input type="text" ng-model="data.newBudget.category" placeholder="category" typeahead="cat as cat.title for cat in categories | filter:{title:$viewValue}">
 		</form>
 	</div>
 	<div class="months">
