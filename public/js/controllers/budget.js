@@ -1,5 +1,5 @@
-angular.module('ed.budgetbud').controller('BudgetCtrl', ['$scope','Budget','$routeParams','$timeout','Category',
-	function($scope, Budget, $params,$timeout,Category){
+angular.module('ed.budgetbud').controller('BudgetCtrl', ['$scope','Budget','$routeParams','$timeout','Category','$route','$location',
+	function($scope, Budget, $params,$timeout, Category, $route, $location){
 
 	Budget.query($params).then(function(budgets){
 		$scope.budgets = budgets;
@@ -21,6 +21,27 @@ angular.module('ed.budgetbud').controller('BudgetCtrl', ['$scope','Budget','$rou
 	});
 
 	$scope.data = {};
+	$scope.data.year = [];
+	var now = $params.month ? new Date(parseInt($params.month)) : new Date();
+
+	// Build Archive quick links
+	for (var i = 0; i < 12; i++) {
+		var month = {};
+		month.start = new Date(now.getFullYear(), now.getMonth() - (6 - i), 1).getTime();
+		month.end = new Date(now.getFullYear(), now.getMonth() - (6 - i) + 1, 0).getTime();
+		if (i === 6) {
+			month.current = true;
+			$scope.data.current = month;
+		}
+
+		$scope.data.year.push(month);
+	}
+
+	// Change budget month
+	$scope.viewBudget = function(month) {
+		$location.search({'month': month.start});
+		$route.reload();
+	};
 
 	// Animate and fix budget boxes
 	function animateBudgets(budget) {

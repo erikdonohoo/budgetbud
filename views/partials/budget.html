@@ -1,9 +1,18 @@
 <div class="container-fluid">
 	<h1>Budgets <i class="fa fa-plus-square clickable" ng-click="data.newBudget = true"></i> <small>Add a budget</small></h1>
+	<h1><em>{{data.current.start | date:'MMMM yyyy'}}</em></h1>
 	<div class="budget new" ng-if="data.newBudget">
 		<form ng-submit="saveBudget()">
 			New
 		</form>
+	</div>
+	<div class="months">
+		<ul class="monthlist">
+			<li class="month" ng-repeat="month in data.year | edWindowWidth:1279" ng-class="{current: month.current}" ng-click="viewBudget(month)">
+				<h4>{{month.start | date:'MMM'}}</h4>
+				<h4>{{month.start | date:'yyyy'}}</h4>
+			</li>
+		</ul>
 	</div>
 </div>
 <div class="container-fluid">

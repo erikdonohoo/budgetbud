@@ -48,6 +48,27 @@ angular.module('ed.budgetbud', ['ngRoute','ngResource','ngTouch','ngAnimate']).
 	};
 })
 
+.filter('edWindowWidth', ['$window','$rootScope',
+	function($win, $root){
+
+	$win.onresize = function() {
+		$root.$apply();
+	};
+
+	return function(list, size) {
+		var newlist = [];
+		if ($win.innerWidth <= size) {
+			var start = list.length/4;
+			var end = (list.length/2) + start;
+			for (var i = start; i < end; i++)
+				newlist.push(list[i]);
+
+			return newlist;
+		}
+		return list;
+	};
+}])
+
 .factory('Budget', ['$q','$http',
 	function($q, $http){
 
@@ -80,7 +101,7 @@ angular.module('ed.budgetbud', ['ngRoute','ngResource','ngTouch','ngAnimate']).
 		});
 		return defer.promise;
 	};
-	
+
 	return cat;
 }])
 
