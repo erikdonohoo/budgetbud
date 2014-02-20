@@ -43,8 +43,12 @@ angular.module('ed.budgetbud', ['ngRoute','ngResource','ngTouch','ngAnimate','ui
 
 .filter('edMoney', function(){
 	return function(num, pre) {
-		var newnum = parseFloat(Math.round(Math.abs(num.toString()) * 100) / 100).toFixed(2);
-		return pre ? pre + '' + newnum : newnum;
+		if (num) {
+			var newnum = parseFloat(Math.round(Math.abs(num.toString()) * 100) / 100).toFixed(2);
+			return pre ? pre + '' + newnum : newnum;
+		}
+
+		return num;
 	};
 })
 

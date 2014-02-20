@@ -31,6 +31,12 @@ angular.module('ed.budgetbud').controller('BudgetCtrl', ['$scope','Budget','$rou
 		$timeout(animateBudgets);
 	});
 
+	$scope.deleteBudget = function(budget) {
+		budget.$delete(function(){
+			$scope.budgets.splice($scope.budgets.indexOf(budget),1);
+		})
+	};
+
 	$scope.saveBudget = function(budget) {
 
 		if (budget.category._id) {
@@ -47,12 +53,15 @@ angular.module('ed.budgetbud').controller('BudgetCtrl', ['$scope','Budget','$rou
 
 		function finish(b) {
 			b.date = $scope.data.current.start;
-			Budget.save(b);
-			$scope.budgets.push(b);
-			$timeout(function(){
-				animateBudgets(b);
+			Budget.save(b, function(bud){
+				bud.spent = 0;
+				$scope.budgets.push(bud);
+				$timeout(function(){
+					animateBudgets(bud);
+				});
+				$scope.data.newBudget = null;
 			});
-			$scope.data.newBudget = null;
+			
 		}
 	};
 

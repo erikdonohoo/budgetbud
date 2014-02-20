@@ -2,7 +2,19 @@ exports.load = function(app) {
 	var mongo = require('mongodb');
 	app.get('/api/budgets', app.get('auth'), query(app,mongo));
 	app.post('/api/budgets', app.get('auth'), save(app,mongo));
+	app.delete('/api/budgets/:id', app.get('auth'), remove(app,mongo));
 };
+
+function remove(app,mongo) {
+	return function(req, res) {
+		mongo.MongoClient.connect(app.get('dbstring'), function(err,db){
+			var budget = db.collection('budget');
+			budget.remove({'id':req.params.id},true,function(err){
+				res.json({'msg':'ok'});
+			});
+		});
+	};
+}
 
 function query(app,mongo) {
 	return function(req, res) {

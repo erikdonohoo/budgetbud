@@ -23,7 +23,7 @@
 	<div class="loading" ng-if="!budgets"><i class="fa fa-star-o fa-spin fa-4x"></i><div>loading</div></div>
 	<div class="row-fluid budget clearfix" ng-repeat="budget in budgets">
 		<div class="budget-desc">
-			<h2 ng-class="{over: budget.total - budget.spent < 0}"><i class="fa fa-dollar"></i> <span>{{budget.total - budget.spent | edMoney}}</span></h2>
+			<h2 ng-class="{over: budget.total - budget.spent < 0}"><i class="fa fa-dollar"></i> <span>{{budget.total - budget.spent | edMoney}}</span> <span ng-click="deleteBudget(budget)"><i class="fa fa-trash-o click"></i></span></h2>
 		</div>
 		<div class="budget-wrapper">
 			<div class="clearfix"><span class="budget-info info title"><b>{{(budget.category | category:categories).title}}</b></span><span class="total budget-info">${{budget.total | edMoney}}</span></div>

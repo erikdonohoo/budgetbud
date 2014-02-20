@@ -15,6 +15,9 @@ body {
   left: 45%;
   top: 40%;
 }
+.click {
+  cursor: pointer;
+}
 a {
   color: inherit;
 }
