@@ -72,7 +72,7 @@ function save(app, mongo) {
 			var budget = db.collection('budget');
 			req.body.user = req.session.user.email;
 			req.body.id = uuid.v4();
-			req.body.date = new Date().getTime();
+			req.body.date = req.body.date ? req.body.date : new Date().getTime();
 			budget.insert(req.body, function(err){
 				res.json(req.body);
 			});

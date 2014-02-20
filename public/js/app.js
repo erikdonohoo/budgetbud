@@ -35,6 +35,47 @@ angular.module('ed.budgetbud', ['ngRoute','ngResource','ngTouch','ngAnimate','ui
 	}]);
 }])
 
+.directive('edKey', ['$window', function($window){
+	return {
+		scope: {edKey: '&'},
+		link: function(scope, elem, attrs) {
+			var win = angular.element($window);
+			win.bind('keydown', watch);
+
+			function watch(e) {
+				var code = e.keyCode || e.which;
+				if (code == attrs.key) {
+					attrs.ctrl = angular.isDefined(attrs.ctrl) ? true : undefined;
+					attrs.shiftkey = angular.isDefined(attrs.shiftkey) ? true : undefined;
+					if (attrs.ctrl && e.ctrlKey && attrs.shiftkey && e.shiftKey) {
+						scope.edKey();
+						scope.$apply();
+					}
+					else if (attrs.ctrl && e.ctrlKey && !attrs.shiftkey) {
+						scope.edKey();
+						scope.$apply();
+					}
+					else if (attrs.shiftkey && e.shiftKey && !attrs.ctrl) {
+						scope.edKey();
+						scope.$apply();
+					}
+					else if (!attrs.shiftkey && !attrs.ctrl) {
+						scope.edKey();
+						scope.$apply();
+					}
+				}
+			}
+
+			elem.bind('$destroy', destroy);
+
+			function destroy(e){
+				win.unbind('keydown', watch);
+				elem.unbind('$destroy', destroy);
+			}
+		}
+	};
+}])
+
 .factory('Nav', [function(){
 	var nav = {};
 	nav.open = false; // Show/hide nav

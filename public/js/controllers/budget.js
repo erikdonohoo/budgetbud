@@ -31,10 +31,24 @@ angular.module('ed.budgetbud').controller('BudgetCtrl', ['$scope','Budget','$rou
 		$timeout(animateBudgets);
 	});
 
+	$scope.newBudget = function() {
+		$scope.data.newBudget = {};
+	};
+
 	$scope.deleteBudget = function(budget) {
 		budget.$delete(function(){
 			$scope.budgets.splice($scope.budgets.indexOf(budget),1);
-		})
+		});
+	};
+
+	$scope.totalBudgets = function() {
+		var total;
+		for (var i = $scope.budgets.length - 1; i >= 0; i--) {
+			total = total || 0;
+			var b = $scope.budgets[i];
+			total += b.total;
+		}
+		return total;
 	};
 
 	$scope.saveBudget = function(budget) {
@@ -52,7 +66,7 @@ angular.module('ed.budgetbud').controller('BudgetCtrl', ['$scope','Budget','$rou
 		}
 
 		function finish(b) {
-			b.date = $scope.data.current.start;
+			b.date = now.getTime();
 			Budget.save(b, function(bud){
 				bud.spent = 0;
 				$scope.budgets.push(bud);
