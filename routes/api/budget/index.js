@@ -30,21 +30,40 @@ function query(app,mongo) {
 				delete req.query.endDate;
 			}
 
-			budget.find(req.query).sort({'total':-1}).toArray(function(err, docs){
-				res.json(docs);
+			budget.find(req.query).sort({'total':-1}).toArray(function(err, budgets){
+
+				// Find total spent in each category
+				var q = {};
+				q.date = req.query.date;
+				expense.find(q).toArray(function(err, expenses){
+					// OPTIMIZE
+					for (var i = expenses.length - 1; i >= 0; i--) {
+						var exp = expenses[i];
+
+						for (var j = budgets.length - 1; j >= 0; j--) {
+							var budget = budgets[j];
+							budget.spent = budget.spent ? budget.spent + exp.amount : 0;
+						}
+					}
+
+					res.json(budgets);
+				});
 			});
 		});
 	};
 }
 
 function save(app, mongo) {
+	var uuid = require('node-uuid');
 	return function(req, res) {
 		mongo.MongoClient.connect(app.get('dbstring'), function(err,db){
 			var budget = db.collection('budget');
 			req.body.user = req.session.user.email;
+			req.body.id = uuid.v4();
+			req.body.date = new Date().getTime();
 			budget.insert(req.body, function(err){
 				res.json(req.body);
-			})
-		})
+			});
+		});
 	};
 }

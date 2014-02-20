@@ -69,50 +69,16 @@ angular.module('ed.budgetbud', ['ngRoute','ngResource','ngTouch','ngAnimate','ui
 	};
 }])
 
-.factory('Budget', ['$q','$http',
-	function($q, $http){
+.factory('Budget', ['$resource',
+	function($res){
 
-	var budget = {};
-
-	budget.query = function(params) {
-		var defer = $q.defer();
-		$http.get('/api/budgets', {params:params}).success(function(budgets){
-			defer.resolve(budgets);
-		}).error(function(err){
-			defer.reject(err);
-		});
-		return defer.promise;
-	};
-
-	budget.save = function(body) {
-		var defer = $q.defer();
-		$http.post('/api/budgets', body).success(function(budg){
-			defer.resolve(budg);
-		}).error(function(err){
-			defer.reject(err);
-		});
-		return defer.promise;
-	};
-
-	return budget;
+	return $res('/api/budgets/:id', {'id':'@id'});
 }])
 
-.factory('Category', ['$q','$http',
-	function($q, $http){
+.factory('Category', ['$resource',
+	function($res){
 
-	var cat = {};
-
-	cat.query = function(params) {
-		var defer = $q.defer();
-		$http.get('/api/categories', {params:params}).success(function(val){
-			defer.resolve(val);
-		}).error(function(err){
-			defer.reject(err);
-		});
-		return defer.promise;
-	};
-
-	return cat;
+	return $res('/api/categories/:id', {'id':'@id'});
 }])
 
 .filter("category", [function(){
@@ -120,7 +86,7 @@ angular.module('ed.budgetbud', ['ngRoute','ngResource','ngTouch','ngAnimate','ui
 	return function(id, cats) {
 		for (var i = cats.length - 1; i >= 0; i--) {
 			var cat = cats[i];
-			if (cat._id === id)
+			if (cat.id === id)
 				return cat;
 		}
 	};

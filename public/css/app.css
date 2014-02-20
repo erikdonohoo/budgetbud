@@ -1,5 +1,6 @@
 @import url(http://fonts.googleapis.com/css?family=Fauna+One);
 @import url(http://fonts.googleapis.com/css?family=Oxygen);
+@import url(http://fonts.googleapis.com/css?family=Inconsolata);
 html,
 body {
   min-height: 100%;
@@ -478,8 +479,9 @@ form {
 }
 .budget-info.total {
   position: absolute;
-  right: -62px;
+  right: -92px;
   color: green;
+  font-family: 'Inconsolata', sans-serif;
 }
 .info {
   position: absolute;
@@ -520,6 +522,11 @@ ul.monthlist li > h4 {
 }
 ul.monthlist li.current {
   color: red;
+}
+form.new-budget {
+  text-align: left;
+  width: 100%;
+  margin: 10px 0;
 }
 @media (max-width: 1279px) {
   ul.monthlist li {

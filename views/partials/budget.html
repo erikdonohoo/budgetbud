@@ -2,7 +2,7 @@
 	<h1>Budgets <i class="fa fa-plus-square clickable" ng-click="data.newBudget = {}"></i> <small>Add a budget</small></h1>
 	<h1><em>{{data.current.start | date:'MMMM yyyy'}}</em></h1>
 	<div class="budget new" ng-if="data.newBudget">
-		<form ng-submit="saveBudget(data.newBudget)">
+		<form ng-submit="saveBudget(data.newBudget)" class="new-budget">
 			<input type="number" ng-model="data.newBudget.total" placeholder="amount" />
 			<input type="description" ng-model="data.newBudget.description" placeholder="description" />
 			<input type="text" ng-model="data.newBudget.category" placeholder="category" typeahead="cat as cat.title for cat in categories | filter:{title:$viewValue}">
@@ -26,9 +26,9 @@
 			<h2 ng-class="{over: budget.total - budget.spent < 0}"><i class="fa fa-dollar"></i> <span>{{budget.total - budget.spent | edMoney}}</span></h2>
 		</div>
 		<div class="budget-wrapper">
-			<div class="clearfix"><span class="budget-info info title"><b>{{(budget.category | category:categories).title}}</b></span><span class="total budget-info">${{budget.total}}</span></div>
+			<div class="clearfix"><span class="budget-info info title"><b>{{(budget.category | category:categories).title}}</b></span><span class="total budget-info">${{budget.total | edMoney}}</span></div>
 			<div class="budget-bar">
-				<div class="budget-mask" ng-style="budget.style" title="{{budget.spent}}"></div>	
+				<div class="budget-mask" ng-style="budget.style" title="{{budget.spent | edMoney}}"></div>	
 			</div>
 		</div>
 	</div>

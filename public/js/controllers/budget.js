@@ -2,13 +2,11 @@ angular.module('ed.budgetbud').controller('BudgetCtrl', ['$scope','Budget','$rou
 	function($scope, Budget, $params,$timeout, Category, $route, $location){
 
 	$scope.categories = [];
-	Category.query().then(function(cats){
-		$scope.categories = cats;
-	});
+	$scope.categories = Category.query();
 
 	$scope.data = {};
 	$scope.data.year = [];
-	var now = $params.month ? new Date(parseInt($params.month)) : new Date();
+	var now = $params.month ? new Date(parseInt($params.month,10)) : new Date();
 
 	// Build Archive quick links
 	for (var i = 0; i < 12; i++) {
@@ -25,25 +23,37 @@ angular.module('ed.budgetbud').controller('BudgetCtrl', ['$scope','Budget','$rou
 
 	// Set query params if none were given
 	if (!$params.startDate)
-		angular.extend($params, {'startDate': $scope.data.current.start, 'endDate': $scope.data.current.end})
+		angular.extend($params, {'startDate': $scope.data.current.start, 'endDate': $scope.data.current.end});
 
 	// Get budgets
-	Budget.query($params).then(function(budgets){
+	Budget.query($params, function(budgets){
 		$scope.budgets = budgets;
-		setUpBudgets();
 		$timeout(animateBudgets);
 	});
 
 	$scope.saveBudget = function(budget) {
-		budget.category = budget.category._id;
-		budget.date = $scope.data.current.start;
-		Budget.save(budget);
-		$scope.budgets.push(budget);
-		setUpBudgets();
-		$timeout(function(){
-			animateBudgets(budget);
-		});
-		$scope.data.newBudget = null;
+
+		if (budget.category._id) {
+			budget.category = budget.category.id;
+			finish(budget);
+		} else {
+			// Create category on the fly
+			Category.save({'title':budget.category}, function(cat){
+				budget.category = cat.id;
+				$scope.categories.push(cat);
+				finish(budget);
+			});
+		}
+
+		function finish(b) {
+			b.date = $scope.data.current.start;
+			Budget.save(b);
+			$scope.budgets.push(b);
+			$timeout(function(){
+				animateBudgets(b);
+			});
+			$scope.data.newBudget = null;
+		}
 	};
 
 	// Change budget month
@@ -52,24 +62,12 @@ angular.module('ed.budgetbud').controller('BudgetCtrl', ['$scope','Budget','$rou
 		$route.reload();
 	};
 
-	// Set values on budgets
-	function setUpBudgets() {
-		for (var i = $scope.budgets.length - 1; i >= 0; i--) {
-			var b = $scope.budgets[i];
-			b.spent = Math.floor(Math.random() * b.total);
-			if (i === 1)
-				b.spent = 0;
-			if (i === 2)
-				b.spent = 1000;
-			b.total = Math.floor(b.total);
-		}
-	}
-
 	// Animate and fix budget boxes
 	function animateBudgets(budget) {
 
 		var radius = {'border-top-left-radius':'inherit','border-bottom-left-radius':'inherit'};
 		function calcVal(b) {
+			b.spent = b.spent ? b.spent : 0;
 			var val = Math.floor((1 - (b.spent/b.total)) * 100);
 			val = val >= 100 ? 100 : (val <= 0 ? 0 : val);
 			return val;
