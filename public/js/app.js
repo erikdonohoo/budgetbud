@@ -84,6 +84,16 @@ angular.module('ed.budgetbud', ['ngRoute','ngResource','ngTouch','ngAnimate','ui
 		return defer.promise;
 	};
 
+	budget.save = function(body) {
+		var defer = $q.defer();
+		$http.post('/api/budgets', body).success(function(budg){
+			defer.resolve(budg);
+		}).error(function(err){
+			defer.reject(err);
+		});
+		return defer.promise;
+	};
+
 	return budget;
 }])
 

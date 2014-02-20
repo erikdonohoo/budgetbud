@@ -1,20 +1,6 @@
 angular.module('ed.budgetbud').controller('BudgetCtrl', ['$scope','Budget','$routeParams','$timeout','Category','$route','$location',
 	function($scope, Budget, $params,$timeout, Category, $route, $location){
 
-	Budget.query($params).then(function(budgets){
-		$scope.budgets = budgets;
-		for (var i = $scope.budgets.length - 1; i >= 0; i--) {
-			var b = $scope.budgets[i];
-			b.spent = Math.floor(Math.random() * b.total);
-			if (i === 1)
-				b.spent = 0;
-			if (i === 2)
-				b.spent = 1000;
-			b.total = Math.floor(b.total);
-		}
-		$timeout(animateBudgets);
-	});
-
 	$scope.categories = [];
 	Category.query().then(function(cats){
 		$scope.categories = cats;
@@ -37,11 +23,47 @@ angular.module('ed.budgetbud').controller('BudgetCtrl', ['$scope','Budget','$rou
 		$scope.data.year.push(month);
 	}
 
+	// Set query params if none were given
+	if (!$params.startDate)
+		angular.extend($params, {'startDate': $scope.data.current.start, 'endDate': $scope.data.current.end})
+
+	// Get budgets
+	Budget.query($params).then(function(budgets){
+		$scope.budgets = budgets;
+		setUpBudgets();
+		$timeout(animateBudgets);
+	});
+
+	$scope.saveBudget = function(budget) {
+		budget.category = budget.category._id;
+		budget.date = $scope.data.current.start;
+		Budget.save(budget);
+		$scope.budgets.push(budget);
+		setUpBudgets();
+		$timeout(function(){
+			animateBudgets(budget);
+		});
+		$scope.data.newBudget = null;
+	};
+
 	// Change budget month
 	$scope.viewBudget = function(month) {
-		$location.search({'month': month.start});
+		$location.search({'month': month.start, 'startDate': month.start, 'endDate': month.end});
 		$route.reload();
 	};
+
+	// Set values on budgets
+	function setUpBudgets() {
+		for (var i = $scope.budgets.length - 1; i >= 0; i--) {
+			var b = $scope.budgets[i];
+			b.spent = Math.floor(Math.random() * b.total);
+			if (i === 1)
+				b.spent = 0;
+			if (i === 2)
+				b.spent = 1000;
+			b.total = Math.floor(b.total);
+		}
+	}
 
 	// Animate and fix budget boxes
 	function animateBudgets(budget) {

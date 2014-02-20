@@ -2,8 +2,12 @@
 	<h1>Budgets <i class="fa fa-plus-square clickable" ng-click="data.newBudget = {}"></i> <small>Add a budget</small></h1>
 	<h1><em>{{data.current.start | date:'MMMM yyyy'}}</em></h1>
 	<div class="budget new" ng-if="data.newBudget">
-		<form ng-submit="saveBudget()">
+		<form ng-submit="saveBudget(data.newBudget)">
+			<input type="number" ng-model="data.newBudget.total" placeholder="amount" />
+			<input type="description" ng-model="data.newBudget.description" placeholder="description" />
 			<input type="text" ng-model="data.newBudget.category" placeholder="category" typeahead="cat as cat.title for cat in categories | filter:{title:$viewValue}">
+			<input type="submit"/>
+			<button ng-click="data.newBudget = null">Cancel</button>
 		</form>
 	</div>
 	<div class="months">
@@ -16,7 +20,7 @@
 	</div>
 </div>
 <div class="container-fluid">
-	<div class="loading" ng-if="!budgets || budgets.length == 0"><i class="fa fa-star-o fa-spin fa-4x"></i><div>loading</div></div>
+	<div class="loading" ng-if="!budgets"><i class="fa fa-star-o fa-spin fa-4x"></i><div>loading</div></div>
 	<div class="row-fluid budget clearfix" ng-repeat="budget in budgets">
 		<div class="budget-desc">
 			<h2 ng-class="{over: budget.total - budget.spent < 0}"><i class="fa fa-dollar"></i> <span>{{budget.total - budget.spent | edMoney}}</span></h2>
