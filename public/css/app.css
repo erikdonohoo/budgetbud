@@ -528,8 +528,35 @@ ul.monthlist li.current {
 }
 form.new-budget {
   text-align: left;
-  width: 100%;
+  width: 50%;
   margin: 10px 0;
+  display: block;
+}
+form.new-budget input,
+form.new-budget button {
+  height: 40px;
+  font-size: 20px;
+  width: 94%;
+  border-radius: 9px;
+  padding: 5px 10px;
+  line-height: 15px;
+  margin: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  -webkit-transition: border-color 0.3s linear;
+  -moz-transition: border-color 0.3s linear;
+  -ms-transition: border-color 0.3s linear;
+  -o-transition: border-color 0.3s linear;
+  transition: border-color 0.3s linear;
+}
+form.new-budget input:focus,
+form.new-budget button:focus {
+  outline: none;
+  border-color: #6bb46b;
+}
+form.new-budget input.half,
+form.new-budget button.half {
+  width: 45%;
+  display: inline-block;
 }
 @media (max-width: 1279px) {
   ul.monthlist li {

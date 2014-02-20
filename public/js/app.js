@@ -35,6 +35,28 @@ angular.module('ed.budgetbud', ['ngRoute','ngResource','ngTouch','ngAnimate','ui
 	}]);
 }])
 
+.filter('budget', function(){
+	return function(cats, budgs) {
+		var list = [];
+		for (var i = cats.length - 1; i >= 0; i--) {
+			var cat = cats[i];
+			var found = false;
+			for (var j = budgs.length - 1; j >= 0; j--) {
+				var bud = budgs[j];
+				if (bud.category === cat.id) {
+					found = true;
+					break;
+				}
+			}
+
+			if (!found)
+				list.push(cat);
+		}
+
+		return list;
+	};
+})
+
 .directive('edKey', ['$window', function($window){
 	return {
 		scope: {edKey: '&'},
@@ -50,20 +72,29 @@ angular.module('ed.budgetbud', ['ngRoute','ngResource','ngTouch','ngAnimate','ui
 					if (attrs.ctrl && e.ctrlKey && attrs.shiftkey && e.shiftKey) {
 						scope.edKey();
 						scope.$apply();
+						e.preventDefault();
+						e.stopPropagation();
 					}
 					else if (attrs.ctrl && e.ctrlKey && !attrs.shiftkey) {
 						scope.edKey();
 						scope.$apply();
+						e.preventDefault();
+						e.stopPropagation();
 					}
 					else if (attrs.shiftkey && e.shiftKey && !attrs.ctrl) {
 						scope.edKey();
 						scope.$apply();
+						e.preventDefault();
+						e.stopPropagation();
 					}
 					else if (!attrs.shiftkey && !attrs.ctrl) {
 						scope.edKey();
 						scope.$apply();
+						e.preventDefault();
+						e.stopPropagation();
 					}
 				}
+				
 			}
 
 			elem.bind('$destroy', destroy);
