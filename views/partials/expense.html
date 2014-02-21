@@ -17,11 +17,12 @@
 		</ul>
 	</div>
 	<div class="loading" ng-if="!expenses"><i class="fa fa-star-o fa-spin fa-4x"></i><div>loading</div></div>
-	<div class="expense">
+	<div class="row-fluid header">
 		<h3 class="col-sm-1">Date</h3>
 		<h3 class="col-sm-2">Amount</h3>
 		<h3 class="col-sm-5">Description</h3>
 		<h3 class="col-sm-3">Category</h3>
+		<h3 class="col-sm-1">Delete</h3>
 	</div>
 	<div ng-repeat="expense in expenses | orderBy:'date':true" class="row-fluid expense clearfix">
 		<h3 class="col-sm-1">{{expense.date | date:'M/dd'}}</h3>

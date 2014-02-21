@@ -564,6 +564,12 @@ form.new-budget button.half {
 .expense + .expense {
   border-top: 2px solid gray;
 }
+.header {
+  margin-bottom: 20px;
+  padding: 5px 0;
+  height: 50px;
+  border-bottom: 2px solid gray;
+}
 .expense {
   padding: 10px 0;
 }
