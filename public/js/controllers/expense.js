@@ -1,7 +1,10 @@
-angular.module('ed.budgetbud').controller('ExpenseCtrl',['$scope','Category','Expense','$routeParams','$location','$route',
-	function($scope, Category, Expense, $params, $location, $route){
+angular.module('ed.budgetbud').controller('ExpenseCtrl',['$scope','Category','Expense','$routeParams','$location','$route','$q',
+	function($scope, Category, Expense, $params, $location, $route, $q){
 
-	$scope.categories = Category.query();
+	var cats = $q.defer();
+	$scope.categories = Category.query(function(){
+		cats.resolve();
+	});
 	$params.date = $params.date ? $params.date : new Date().getTime();
 	var now = $params.date ? new Date(parseInt($params.date,10)) : new Date();
 	
@@ -26,7 +29,19 @@ angular.module('ed.budgetbud').controller('ExpenseCtrl',['$scope','Category','Ex
 
 	$params.startDate = $scope.data.current.start;
 	$params.endDate = $scope.data.current.end;
-	$scope.expenses = Expense.query($params);
+	var buds = $q.defer();
+	$scope.expenses = Expense.query($params, function(){
+		buds.resolve();
+	});
+
+	$q.all([cats.promise, buds.promise]).then(function(){
+		angular.forEach($scope.expenses, function(b){
+			angular.forEach($scope.categories, function(c){
+				if (b.category === c.id)
+					b.cat = c;
+			});
+		});
+	});
 
 	$scope.changeMonth = function(month) {
 		$location.search({'date': month.start, 'startDate': month.start, 'endDate': month.end});
