@@ -13,7 +13,7 @@
 	</div>
 	<div class="months">
 		<ul class="monthlist">
-			<li class="month" ng-repeat="month in data.year | edWindowWidth:1279" ng-class="{current: month.current}" ng-click="viewBudget(month)">
+			<li class="month" ng-repeat="month in data.year | edWindowWidth:1279" ng-class="{current: month.current}" ng-click="changeMonth(month)">
 				<h4>{{month.start | date:'MMM'}}</h4>
 				<h4>{{month.start | date:'yyyy'}}</h4>
 			</li>
@@ -29,7 +29,7 @@
 		<div class="budget-wrapper">
 			<div class="clearfix"><span class="budget-info info title"><b>{{(budget.category | category:categories).title}}</b></span><span class="total budget-info">${{budget.total | edMoney}}</span></div>
 			<div class="budget-bar">
-				<div class="budget-mask" ng-style="budget.style" title="{{budget.spent | edMoney}}"></div>	
+				<div ng-class="{over: budget.total - budget.spent < 0}" class="budget-mask" ng-style="budget.style" title="${{budget.spent | edMoney}}"></div>	
 			</div>
 		</div>
 	</div>

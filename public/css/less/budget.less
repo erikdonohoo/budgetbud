@@ -56,14 +56,13 @@
 	&:after {
 		content:attr(title);
 		position:absolute;
-		left:18px;
+		font-family:@font-monospace;
+		left:10px;
 		bottom:0;
-	}
-	&:before {
-		position:absolute;
-		left:6px;
-		content:'$';
-		bottom:0;
+
+		&.over {
+			color:red;
+		}
 	}
 }
 .budget-info {
@@ -75,7 +74,7 @@
 }
 .budget-info.total {
 	position:absolute;
-	right:-92px;
+	left:100%;
 	color:green;
 	font-family:@font-monospace;
 }

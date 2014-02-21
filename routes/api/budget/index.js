@@ -54,7 +54,9 @@ function query(app,mongo) {
 
 						for (var j = budgets.length - 1; j >= 0; j--) {
 							var budget = budgets[j];
-							budget.spent = budget.spent ? budget.spent + exp.amount : 0;
+							if (budget.category === exp.category) {
+								budget.spent = (budget.spent !== undefined) ? budget.spent + exp.amount : 0 + exp.amount;
+							}
 						}
 					}
 

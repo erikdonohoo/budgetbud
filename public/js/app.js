@@ -14,7 +14,8 @@ angular.module('ed.budgetbud', ['ngRoute','ngResource','ngTouch','ngAnimate','ui
 		controller: 'BudgetCtrl'
 	})
 	.when('/expenses', {
-		template:'<div>Expenses</div>'
+		templateUrl:'partials/expense',
+		controller: 'ExpenseCtrl'
 	})
 	.when('/login',{
 		templateUrl:'/partials/login',
@@ -155,6 +156,12 @@ angular.module('ed.budgetbud', ['ngRoute','ngResource','ngTouch','ngAnimate','ui
 	function($res){
 
 	return $res('/api/categories/:id', {'id':'@id'});
+}])
+
+.factory('Expense', ['$resource',
+	function($res){
+		
+	return $res('/api/expenses/:id', {'id':'@id'});
 }])
 
 .filter("category", [function(){

@@ -42,6 +42,7 @@ app.get('/partials/:name', routes.partials);
 require('./routes/api/user').load(app);
 require('./routes/api/budget').load(app);
 require('./routes/api/category').load(app);
+require('./routes/api/expense').load(app);
 
 // redirect all others to the index (HTML5 history)
 app.get('*', routes.index);

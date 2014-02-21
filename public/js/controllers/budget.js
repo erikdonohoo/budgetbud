@@ -53,7 +53,7 @@ angular.module('ed.budgetbud').controller('BudgetCtrl', ['$scope','Budget','$rou
 
 	$scope.saveBudget = function(budget) {
 
-		if (budget.category._id) {
+		if (budget.category.id) {
 			budget.category = budget.category.id;
 			finish(budget);
 		} else {
@@ -80,7 +80,7 @@ angular.module('ed.budgetbud').controller('BudgetCtrl', ['$scope','Budget','$rou
 	};
 
 	// Change budget month
-	$scope.viewBudget = function(month) {
+	$scope.changeMonth = function(month) {
 		$location.search({'month': month.start, 'startDate': month.start, 'endDate': month.end});
 		$route.reload();
 	};

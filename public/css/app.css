@@ -464,14 +464,12 @@ form {
 .budget-mask:after {
   content: attr(title);
   position: absolute;
-  left: 18px;
+  font-family: 'Inconsolata', sans-serif;
+  left: 10px;
   bottom: 0;
 }
-.budget-mask:before {
-  position: absolute;
-  left: 6px;
-  content: '$';
-  bottom: 0;
+.budget-mask:after.over {
+  color: red;
 }
 .budget-info {
   z-index: 3;
@@ -482,7 +480,7 @@ form {
 }
 .budget-info.total {
   position: absolute;
-  right: -92px;
+  left: 100%;
   color: green;
   font-family: 'Inconsolata', sans-serif;
 }
@@ -562,4 +560,13 @@ form.new-budget button.half {
   ul.monthlist li {
     width: 16.666666666666668%;
   }
+}
+.expense + .expense {
+  border-top: 2px solid gray;
+}
+.expense {
+  padding: 10px 0;
+}
+.expense h3 {
+  margin: 0;
 }
