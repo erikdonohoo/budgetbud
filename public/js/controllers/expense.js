@@ -10,7 +10,7 @@ angular.module('ed.budgetbud').controller('ExpenseCtrl',['$scope','Category','Ex
 	
 
 	// Build Archive quick links
-	$scope.data = {};
+	$scope.data = {}; 
 	$scope.data.year = [];
 	for (var i = 0; i < 12; i++) {
 		var month = {};
