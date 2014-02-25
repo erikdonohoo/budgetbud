@@ -8,6 +8,10 @@ function save(app,mongo) {
 	var uuid = require('node-uuid');
 	return function(req, res) {
 		mongo.MongoClient.connect(app.get('dbstring'), function(err,db){
+			if (err) {
+				res.json(500,{"error":"Oops"})
+				return;
+			}
 			var category = db.collection('category');
 			req.body.user = req.session.user.email;
 			req.body.id = uuid.v4();
@@ -21,6 +25,10 @@ function save(app,mongo) {
 function query(app,mongo) {
 	return function(req, res) {
 		mongo.MongoClient.connect(app.get('dbstring'), function(err,db){
+			if (err) {
+				res.json(500,{"error":"Oops"})
+				return;
+			}
 			var category = db.collection('category');
 			
 			req.query = req.query || {};
